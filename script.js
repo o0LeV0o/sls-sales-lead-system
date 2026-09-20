@@ -1,4 +1,4 @@
-const TELEGRAM_USERNAME = "";
+const TELEGRAM_USERNAME = "LevIlx_Ilc";
 
 const intro = document.querySelector(".intro");
 let introFinished = false;
