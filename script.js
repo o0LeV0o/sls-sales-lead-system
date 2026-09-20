@@ -1,9 +1,13 @@
 const TELEGRAM_USERNAME = "";
 
 const intro = document.querySelector(".intro");
+let introFinished = false;
 const finishIntro = () => {
+  if (introFinished) return;
+  introFinished = true;
   intro?.classList.add("hide");
   document.body.classList.remove("intro-active");
+  window.setTimeout(startRevealAnimations, 180);
 };
 
 window.setTimeout(finishIntro, 2600);
@@ -37,9 +41,57 @@ const observer = new IntersectionObserver((entries) => {
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.08, rootMargin: "0px 0px -45px" });
+}, { threshold: 0.12, rootMargin: "0px 0px -55px" });
 
-document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+function startRevealAnimations() {
+  document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+}
+
+document.querySelectorAll(".glow-card").forEach((card) => {
+  card.addEventListener("pointermove", (event) => {
+    const bounds = card.getBoundingClientRect();
+    card.style.setProperty("--glow-x", `${event.clientX - bounds.left}px`);
+    card.style.setProperty("--glow-y", `${event.clientY - bounds.top}px`);
+  });
+});
+
+const disclaimer = document.querySelector(".disclaimer");
+const typewriterLines = [...document.querySelectorAll("[data-typewriter]")];
+const typewriterSource = typewriterLines.map((line) => line.textContent.trim());
+let disclaimerStarted = false;
+
+typewriterLines.forEach((line, index) => {
+  line.setAttribute("aria-label", typewriterSource[index]);
+  line.textContent = "";
+});
+
+const typeLine = (element, text, speed) => new Promise((resolve) => {
+  element.textContent = "";
+  element.classList.add("typing");
+  let index = 0;
+  const tick = () => {
+    element.textContent += text[index] || "";
+    index += 1;
+    if (index <= text.length) {
+      window.setTimeout(tick, speed);
+    } else {
+      element.classList.remove("typing");
+      resolve();
+    }
+  };
+  tick();
+});
+
+const disclaimerObserver = new IntersectionObserver(async (entries) => {
+  if (disclaimerStarted || !entries.some((entry) => entry.isIntersecting)) return;
+  disclaimerStarted = true;
+  for (let index = 0; index < typewriterLines.length; index += 1) {
+    await typeLine(typewriterLines[index], typewriterSource[index], index === 0 ? 11 : 24);
+  }
+  disclaimerObserver.disconnect();
+}, { threshold: .35 });
+
+if (disclaimer) disclaimerObserver.observe(disclaimer);
 
 document.querySelectorAll(".buy-button").forEach((button) => {
   button.addEventListener("click", (event) => {

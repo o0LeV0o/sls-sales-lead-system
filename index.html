@@ -35,23 +35,23 @@
 
   <main>
     <section class="hero page-section" id="hero">
-      <div class="hero-copy reveal">
-        <div class="product-lockup"><span class="mini-avatar">S</span><strong>SLS</strong></div>
+      <div class="hero-copy reveal" data-reveal="left">
+        <div class="product-lockup"><span class="mini-avatar"><img src="assets/lev-dubai.png" alt="Лев"></span><strong>SLS</strong></div>
         <h1>Результат, Вместо<br>Бесконечного Старта</h1>
         <p>Система, которая объединила мой опыт в продажах, фрилансе, личном бренде и заработке с блога.</p>
         <a class="outline-button" href="#pricing">Перейти к тарифам <span>→</span></a>
       </div>
-      <div class="hero-art reveal">
+      <div class="hero-art glow-card reveal" data-reveal="right">
         <div class="hero-glow"></div>
-        <img src="assets/sls-hero-collage.png" alt="Лев на фоне ночного города — SLS" width="1450" height="1088">
+        <div class="blank-media" role="img" aria-label="Здесь появится главное фото SLS"></div>
         <div class="hero-badge"><strong>SLS</strong><span>Sales Lead System</span></div>
       </div>
     </section>
 
     <section class="about page-section" id="about">
-      <h2 class="metal-title letters reveal" aria-label="Кто такой Лев?">Кто такой Лев?</h2>
+      <h2 class="metal-title letters reveal" data-reveal="title" aria-label="Кто такой Лев?">Кто такой Лев?</h2>
       <div class="about-layout">
-        <article class="about-card reveal">
+        <article class="about-card reveal" data-reveal="left">
           <p class="card-label">Основатель SLS</p>
           <h3>Лев Ильчук</h3>
           <p class="activity"><span>Деятельность:</span> продажи, личный бренд, фриланс и заработок с блога</p>
@@ -62,8 +62,8 @@
           <p>Начал с холодных рассылок, звонков и продаж. За 7 месяцев заработал более 2 млн рублей, обучил учеников продажам и помог им выйти на желаемый доход.</p>
           <p>Сегодня работаю с личным брендом, блогом, фрилансом и системными продажами. SLS — это база всего, что я понял и применил на своём пути.</p>
         </article>
-        <figure class="about-photo reveal">
-          <img src="assets/lev-dubai.png" alt="Лев Ильчук в Дубае" loading="lazy" width="640" height="640">
+        <figure class="about-photo glow-card reveal" data-reveal="right">
+          <div class="blank-media" role="img" aria-label="Здесь появится фото Льва"></div>
           <figcaption>Лев / SLS</figcaption>
         </figure>
       </div>
@@ -74,8 +74,8 @@
       <div class="step-label reveal">Шаг 1:</div>
       <h2 class="metal-title reveal">Посмотри, что находится<br>внутри SLS</h2>
       <p class="step-subtitle reveal">Эфиры, разборы, видео, голосовые и база моего опыта — всё в одном закрытом пространстве.</p>
-      <div class="media-frame channel-preview reveal">
-        <img src="assets/sls-channel.png" alt="Пример материалов в канале SLS" loading="lazy" width="456" height="1254">
+      <div class="media-frame channel-preview glow-card reveal">
+        <div class="blank-media" role="img" aria-label="Здесь появится видео или материал SLS"></div>
         <div class="media-shade"></div>
         <div class="play-button" aria-hidden="true">▶</div>
         <div class="media-caption"><strong>SLS</strong><span>Канал и база материалов</span></div>
@@ -88,29 +88,33 @@
       <h2 class="metal-title reveal">Посмотри, что получишь</h2>
       <p class="step-subtitle reveal">Два пространства, которые работают вместе: знания и окружение.</p>
 
-      <article class="review-row reveal">
-        <div class="review-copy">
+      <article class="community-card reveal" data-reveal="left">
+        <div class="community-number">01</div>
+        <div class="community-copy">
+          <p class="community-label">Информация и практика</p>
           <h3>Канал SLS</h3>
-          <span>База опыта</span>
-          <p>Посты, эфиры, разборы, видео и голосовые по продажам, фрилансу, блогу, рассылкам и звонкам.</p>
-          <p>Весь контент сохраняется и доступен в рамках выбранного тарифа.</p>
-        </div>
-        <div class="review-visual review-channel">
-          <img src="assets/sls-channel.png" alt="Канал SLS" loading="lazy" width="456" height="1254">
-          <div class="play-button small" aria-hidden="true">▶</div>
+          <p>База моего опыта: эфиры, разборы, голосовые, посты и материалы под ту сферу, в которой ты хочешь вырасти.</p>
+          <ul>
+            <li><strong>Продажи:</strong> переписки, звонки, выявление потребностей, возражения и закрытие клиентов.</li>
+            <li><strong>Фриланс:</strong> выбор услуги, упаковка предложения, поиск заказчиков и рост чека.</li>
+            <li><strong>Блог:</strong> контент, воронки, прогревы и продажи даже с небольшой аудиторией.</li>
+          </ul>
+          <p class="community-note">Все посты, эфиры и материалы сохраняются и остаются доступными в рамках выбранного тарифа.</p>
         </div>
       </article>
 
-      <article class="review-row reverse reveal">
-        <div class="review-copy">
+      <article class="community-card reveal" data-reveal="right">
+        <div class="community-number">02</div>
+        <div class="community-copy">
+          <p class="community-label">Связи и окружение</p>
           <h3>Чат SLS</h3>
-          <span>Окружение</span>
-          <p>Новые связи, общение с участниками и разбор конкретных ситуаций. Можно найти партнёра, перейти в личку и двигаться вместе.</p>
-          <p>Я общаюсь с каждым и помогаю, чем могу.</p>
-        </div>
-        <div class="review-visual review-photo">
-          <img src="assets/lev-dubai.png" alt="Окружение и рост в SLS" loading="lazy" width="640" height="640">
-          <div class="play-button small" aria-hidden="true">▶</div>
+          <p>Основная площадка общения, где можно найти новые связи, обсудить свою ситуацию и двигаться вместе с людьми с таким же мышлением.</p>
+          <ul>
+            <li>Разбор конкретных ситуаций участников.</li>
+            <li>Обратная связь по планам, продажам и действиям.</li>
+            <li>Возможность найти партнёра и продолжить работу вместе.</li>
+          </ul>
+          <p class="community-note">Я пообщаюсь с каждым, отвечу на вопросы и помогу тем, чем смогу.</p>
         </div>
       </article>
 
@@ -122,15 +126,15 @@
       <h2 class="metal-title reveal">Посмотри ответы на самые<br>частые вопросы</h2>
 
       <article class="faq-row reveal">
-        <div class="faq-media"><img src="assets/lev-dubai.png" alt="Лев отвечает на вопросы" loading="lazy"><div class="play-button small">▶</div></div>
+        <div class="faq-media glow-card"><div class="blank-media" role="img" aria-label="Здесь появится видеоответ"></div><div class="play-button small">▶</div></div>
         <div class="faq-copy"><h3>Подойдёт ли мне SLS, если я начинаю с нуля?</h3><p>Да. Внутри есть путь от первых шагов и выбора направления до поиска клиентов, коммуникации и продаж. Но применять знания и действовать нужно тебе.</p></div>
       </article>
       <article class="faq-row reveal">
-        <div class="faq-media"><img src="assets/sls-channel.png" alt="Материалы SLS" loading="lazy"><div class="play-button small">▶</div></div>
+        <div class="faq-media glow-card"><div class="blank-media" role="img" aria-label="Здесь появится видеоответ"></div><div class="play-button small">▶</div></div>
         <div class="faq-copy"><h3>На чём я смогу зарабатывать?</h3><p>Материалы охватывают фриланс, продажи услуг и продуктов, блог, личный бренд, холодные рассылки и звонки — под разный стартовый уровень.</p></div>
       </article>
       <article class="faq-row reveal">
-        <div class="faq-media"><img src="assets/sls-hero-collage.png" alt="Система SLS" loading="lazy"><div class="play-button small">▶</div></div>
+        <div class="faq-media glow-card"><div class="blank-media" role="img" aria-label="Здесь появится видеоответ"></div><div class="play-button small">▶</div></div>
         <div class="faq-copy"><h3>Гарантирует ли SLS доход?</h3><p>Нет. SLS даёт информацию, личный опыт, материалы и обратную связь. Результат зависит от твоих действий, ниши, навыков, продукта и ситуации на рынке.</p></div>
       </article>
     </section>
@@ -139,8 +143,8 @@
       <div class="step-label reveal">Шаг 4:</div>
       <h2 class="metal-title reveal">Прими решение</h2>
       <p class="step-subtitle reveal">Если хочешь расти, продавать и быть в сильном окружении — выбирай доступ.</p>
-      <a class="decision-media reveal" href="#pricing" aria-label="Перейти к тарифам">
-        <img src="assets/sls-hero-collage.png" alt="SLS — Sales Lead System" loading="lazy">
+      <a class="decision-media glow-card reveal" href="#pricing" aria-label="Перейти к тарифам">
+        <div class="blank-media" role="img" aria-label="Здесь появится финальное видео SLS"></div>
         <div class="media-shade"></div>
         <div class="play-button">↓</div>
       </a>
@@ -183,8 +187,8 @@
 
     <section class="disclaimer page-section">
       <h2>Дисклеймер:</h2>
-      <p>Информация, примеры и результаты на сайте отражают индивидуальный опыт. SLS не гарантирует доход, клиентов, продажи, прибыль или окупаемость. Результат зависит от ваших действий, навыков, выбранной ниши, продукта и рыночной ситуации.</p>
-      <p>Последнее обновление: 20 сентября 2026</p>
+      <p data-typewriter>Информация, примеры и результаты на сайте отражают индивидуальный опыт. SLS не гарантирует доход, клиентов, продажи, прибыль или окупаемость. Результат зависит от ваших действий, навыков, выбранной ниши, продукта и рыночной ситуации.</p>
+      <p data-typewriter>Последнее обновление: 20 сентября 2026</p>
     </section>
   </main>
 
