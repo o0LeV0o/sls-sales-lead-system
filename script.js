@@ -28,10 +28,37 @@ nav?.querySelectorAll("a").forEach((link) => link.addEventListener("click", () =
 }));
 
 const themeButton = document.querySelector(".theme-toggle");
+const root = document.documentElement;
+const themeColor = document.querySelector('meta[name="theme-color"]');
+const savedTheme = window.localStorage.getItem("sls-theme");
+
+const applyTheme = (theme) => {
+  const isLight = theme === "light";
+  root.toggleAttribute("data-theme", isLight);
+  if (isLight) root.setAttribute("data-theme", "light");
+  themeButton?.setAttribute("aria-pressed", String(isLight));
+  if (themeButton) themeButton.textContent = isLight ? "◑" : "◔";
+  themeColor?.setAttribute("content", isLight ? "#f5f5f2" : "#050505");
+};
+
+applyTheme(savedTheme === "light" ? "light" : "dark");
+
 themeButton?.addEventListener("click", () => {
-  const isLight = document.body.classList.toggle("light-theme");
-  themeButton.setAttribute("aria-pressed", String(isLight));
-  themeButton.textContent = isLight ? "◑" : "◔";
+  const nextTheme = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+  applyTheme(nextTheme);
+  window.localStorage.setItem("sls-theme", nextTheme);
+});
+
+document.querySelectorAll(".letters").forEach((heading) => {
+  const text = heading.getAttribute("aria-label") || heading.textContent.trim();
+  heading.textContent = "";
+  [...text].forEach((character, index) => {
+    const span = document.createElement("span");
+    span.className = "split-char";
+    span.textContent = character === " " ? "\u00a0" : character;
+    span.style.transitionDelay = `${index * 35}ms`;
+    heading.append(span);
+  });
 });
 
 const observer = new IntersectionObserver((entries) => {
@@ -85,8 +112,10 @@ const typeLine = (element, text, speed) => new Promise((resolve) => {
 const disclaimerObserver = new IntersectionObserver(async (entries) => {
   if (disclaimerStarted || !entries.some((entry) => entry.isIntersecting)) return;
   disclaimerStarted = true;
+  disclaimer.classList.add("active");
+  await new Promise((resolve) => window.setTimeout(resolve, 350));
   for (let index = 0; index < typewriterLines.length; index += 1) {
-    await typeLine(typewriterLines[index], typewriterSource[index], index === 0 ? 11 : 24);
+    await typeLine(typewriterLines[index], typewriterSource[index], index === 0 ? 17 : 32);
   }
   disclaimerObserver.disconnect();
 }, { threshold: .35 });
