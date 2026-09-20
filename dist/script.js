@@ -61,24 +61,47 @@ document.querySelectorAll(".letters").forEach((heading) => {
   });
 });
 
+const revealSelector = [
+  ".hero-copy", ".hero-art", ".about .metal-title", ".about-card", ".about-photo",
+  ".step-section .step-label", ".step-section .metal-title", ".step-section .step-subtitle",
+  ".media-frame", ".step-section .red-outline-button", ".reviews .step-label",
+  ".reviews .metal-title", ".reviews .step-subtitle", ".review-row",
+  ".reviews .red-outline-button", ".faq .step-label", ".faq .metal-title", ".faq-row",
+  ".decision .step-label", ".decision .metal-title", ".decision .step-subtitle",
+  ".decision-media", ".price-card", ".footer"
+].join(",");
+
+document.querySelectorAll(revealSelector).forEach((element) => element.classList.add("reveal"));
+
+document.querySelectorAll(".about-layout, .pricing-grid").forEach((group) => {
+  [...group.children].forEach((element, index) => {
+    element.style.setProperty("--reveal-delay", `${index * 130}ms`);
+  });
+});
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
+    } else {
+      entry.target.classList.remove("visible");
     }
   });
-}, { threshold: 0.12, rootMargin: "0px 0px -55px" });
+}, { threshold: 0.16, rootMargin: "0px 0px -8%" });
 
 function startRevealAnimations() {
   document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
 }
 
-document.querySelectorAll(".glow-card").forEach((card) => {
+document.querySelectorAll(".glow-card, .price-card").forEach((card) => {
   card.addEventListener("pointermove", (event) => {
     const bounds = card.getBoundingClientRect();
-    card.style.setProperty("--glow-x", `${event.clientX - bounds.left}px`);
-    card.style.setProperty("--glow-y", `${event.clientY - bounds.top}px`);
+    const x = `${event.clientX - bounds.left}px`;
+    const y = `${event.clientY - bounds.top}px`;
+    card.style.setProperty("--glow-x", x);
+    card.style.setProperty("--glow-y", y);
+    card.style.setProperty("--tariff-x", x);
+    card.style.setProperty("--tariff-y", y);
   });
 });
 
@@ -86,17 +109,30 @@ const disclaimer = document.querySelector(".disclaimer");
 const typewriterLines = [...document.querySelectorAll("[data-typewriter]")];
 const typewriterSource = typewriterLines.map((line) => line.textContent.trim());
 let disclaimerStarted = false;
+let disclaimerRun = 0;
 
 typewriterLines.forEach((line, index) => {
   line.setAttribute("aria-label", typewriterSource[index]);
   line.textContent = "";
 });
 
-const typeLine = (element, text, speed) => new Promise((resolve) => {
+const clearDisclaimer = () => {
+  typewriterLines.forEach((line) => {
+    line.textContent = "";
+    line.classList.remove("typing");
+  });
+};
+
+const typeLine = (element, text, speed, runId) => new Promise((resolve) => {
   element.textContent = "";
   element.classList.add("typing");
   let index = 0;
   const tick = () => {
+    if (runId !== disclaimerRun) {
+      element.classList.remove("typing");
+      resolve();
+      return;
+    }
     element.textContent += text[index] || "";
     index += 1;
     if (index <= text.length) {
@@ -110,15 +146,27 @@ const typeLine = (element, text, speed) => new Promise((resolve) => {
 });
 
 const disclaimerObserver = new IntersectionObserver(async (entries) => {
-  if (disclaimerStarted || !entries.some((entry) => entry.isIntersecting)) return;
+  const entry = entries[0];
+  if (!entry) return;
+
+  if (!entry.isIntersecting) {
+    disclaimerRun += 1;
+    disclaimerStarted = false;
+    disclaimer.classList.remove("active");
+    clearDisclaimer();
+    return;
+  }
+
+  if (disclaimerStarted) return;
   disclaimerStarted = true;
+  const runId = ++disclaimerRun;
   disclaimer.classList.add("active");
   await new Promise((resolve) => window.setTimeout(resolve, 350));
   for (let index = 0; index < typewriterLines.length; index += 1) {
-    await typeLine(typewriterLines[index], typewriterSource[index], index === 0 ? 17 : 32);
+    if (runId !== disclaimerRun) return;
+    await typeLine(typewriterLines[index], typewriterSource[index], index === 0 ? 17 : 32, runId);
   }
-  disclaimerObserver.disconnect();
-}, { threshold: .35 });
+}, { threshold: .3 });
 
 if (disclaimer) disclaimerObserver.observe(disclaimer);
 
