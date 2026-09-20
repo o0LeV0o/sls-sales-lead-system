@@ -85,8 +85,9 @@ button { font: inherit; }
 .step-label { width: max-content; margin: 0 auto 25px; padding-bottom: 7px; border-bottom: 4px solid var(--red); color: #ededed; font-size: 22px; font-weight: 1000; letter-spacing: .14em; text-transform: uppercase; }
 .step-section .metal-title, .reviews .metal-title, .faq .metal-title, .decision .metal-title { font-size: clamp(2.45rem, 4.6vw, 4.4rem); }
 .step-subtitle { max-width: 760px; margin: 24px auto 48px; color: #a8a8a8; font-size: 18px; }
-.media-frame { position: relative; width: min(800px,100%); height: 530px; margin: 0 auto; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255,255,255,.15); background: #090909; box-shadow: 0 26px 90px rgba(0,0,0,.45); }
+.media-frame { position: relative; width: min(900px,100%); height: auto; aspect-ratio: 16 / 9; margin: 0 auto; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255,255,255,.15); background: #050505; box-shadow: 0 26px 90px rgba(0,0,0,.45); }
 .channel-preview img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; filter: grayscale(.55) contrast(1.08); }
+.step-video { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain; background: #050505; }
 .media-shade { position: absolute; inset: 0; background: linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.7)); }
 .play-button { position: absolute; z-index: 3; inset: 50% auto auto 50%; transform: translate(-50%,-50%); width: 80px; height: 80px; display: grid; place-items: center; padding-left: 5px; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; background: rgba(175,175,175,.64); color: #fff; font-size: 22px; backdrop-filter: blur(8px); box-shadow: 0 0 38px rgba(255,255,255,.14); }
 .play-button.small { width: 66px; height: 66px; font-size: 18px; }
@@ -119,6 +120,24 @@ button { font: inherit; }
 .review-visual { position: relative; min-height: 285px; overflow: hidden; background: #080808; }
 .review-visual img { width: 100%; height: 100%; object-fit: cover; }
 .review-channel img { object-position: center 18%; }
+.student-review { min-height: 610px; grid-template-columns: 1.12fr .88fr; }
+.student-review .review-copy { display: flex; flex-direction: column; justify-content: center; padding: 44px; }
+.student-heading { display: flex; align-items: center; gap: 17px; }
+.student-heading span { color: var(--red); font-size: 11px; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+.student-heading h3 { margin-top: 2px; font-size: 32px; }
+.review-copy .student-result { margin-top: 25px; color: #d0d0d0; font-size: 16px; line-height: 1.65; }
+.student-evidence { margin-top: 28px; display: grid; grid-template-columns: 1.45fr .72fr; gap: 13px; align-items: stretch; }
+.telegram-review, .income-proof { margin: 0; min-width: 0; }
+.telegram-review img, .income-proof img { width: 100%; height: 178px; object-fit: cover; border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: #080808; }
+.telegram-review img { object-position: center; }
+.income-proof img { object-position: center; }
+.telegram-review figcaption, .income-proof figcaption { margin-top: 9px; color: #707070; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.student-gallery { min-height: 610px; isolation: isolate; }
+.student-gallery::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background: linear-gradient(180deg,transparent 48%,rgba(0,0,0,.88)); }
+.student-gallery .student-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.result-badge { position: absolute; z-index: 3; left: 27px; bottom: 25px; display: flex; flex-direction: column; }
+.result-badge strong { color: #fff; font-size: clamp(1.8rem,3vw,3rem); line-height: 1; letter-spacing: -.04em; text-shadow: 0 4px 18px #000; }
+.result-badge span { margin-top: 7px; color: #d0d0d0; font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
 .wide { margin-top: 75px; }
 
 .faq { padding-top: 80px; }
@@ -309,13 +328,17 @@ html[data-theme="light"] .letters .split-char { background: linear-gradient(180d
   .step-section, .reviews, .faq, .decision { padding: 75px 0 100px; }
   .step-label { font-size: 16px; }
   .step-section .metal-title, .reviews .metal-title, .faq .metal-title, .decision .metal-title { font-size: 2.45rem; }
-  .media-frame { height: 470px; }
+  .media-frame { height: auto; aspect-ratio: 16 / 9; }
   .review-row, .faq-row { grid-template-columns: 1fr; }
   .community-card { grid-template-columns: 1fr; }
   .community-number { font-size: 4.5rem; }
   .review-row.reverse .review-copy, .review-row.reverse .review-visual, .faq-row:nth-of-type(even) .faq-media, .faq-row:nth-of-type(even) .faq-copy { order: initial; }
   .review-visual, .faq-media { min-height: 250px; }
   .review-copy, .faq-copy { padding: 30px 24px; }
+  .student-review .review-copy { padding: 32px 24px; }
+  .student-evidence { grid-template-columns: 1fr; }
+  .telegram-review img, .income-proof img { height: auto; max-height: 300px; }
+  .student-gallery { min-height: 430px; }
   .decision-media { height: 360px; }
   .pricing-grid { grid-template-columns: 1fr; }
   .price-card { min-height: auto; }
