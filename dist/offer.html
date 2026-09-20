@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="Публичная оферта проекта SLS — Sales Lead System.">
+  <title>Публичная оферта — SLS</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050505'/%3E%3Cpath d='M13 19h38v8H22v5h24c4 0 7 3 7 7v6H13v-8h31v-5H20c-4 0-7-3-7-7z' fill='%23c8ff19'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="offer-page">
+  <header class="offer-header">
+    <div class="offer-header-inner">
+      <a class="brand-mark" href="index.html">SLS</a>
+      <a class="offer-back" href="index.html#pricing">← Вернуться к тарифам</a>
+    </div>
+  </header>
+  <main class="offer-main">
+    <h1 class="offer-title">Публичная оферта</h1>
+    <p class="offer-meta">Редакция от 20.09.2026</p>
+    <article class="offer-content" id="offer-content" aria-live="polite">
+      <p class="offer-loading">Загружаем документ…</p>
+    </article>
+  </main>
+  <script>
+    fetch("offer.txt")
+      .then((response) => {
+        if (!response.ok) throw new Error("Не удалось загрузить документ");
+        return response.text();
+      })
+      .then((text) => {
+        const cleaned = text
+          .replace(/^\[20\.09\.2026 1:59\]\s*Политика конфиденциальности:\s*/i, "")
+          .replace(/\[20\.09\.2026 1:59\]\s*Политика конфиденциальности:\s*/g, "");
+        const lines = cleaned.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+        const fragment = document.createDocumentFragment();
+        lines.forEach((line, index) => {
+          const paragraph = document.createElement("p");
+          paragraph.textContent = line;
+          if (/^\d+\.\s+[А-ЯЁ]/.test(line)) paragraph.className = "offer-section";
+          if (index === 0 || line.startsWith("Настоящий документ")) paragraph.classList.add("offer-lead");
+          fragment.appendChild(paragraph);
+        });
+        const container = document.querySelector("#offer-content");
+        container.replaceChildren(fragment);
+      })
+      .catch(() => {
+        document.querySelector("#offer-content").innerHTML = "<p>Документ временно не загрузился. Напишите: <a href='mailto:o08LeV80o@gmail.com'>o08LeV80o@gmail.com</a></p>";
+      });
+  </script>
+</body>
+</html>
