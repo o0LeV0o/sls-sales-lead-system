@@ -134,9 +134,9 @@ button { font: inherit; }
 .telegram-review figcaption, .income-proof figcaption { margin-top: 9px; color: #707070; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
 .dmitry-ai-review .student-evidence { grid-template-columns: 1fr 1fr; }
 .dmitry-ai-review .telegram-review img, .dmitry-ai-review .income-proof img { height: 270px; object-fit: contain; background: #050505; }
-.gleb-review { min-height: 430px; grid-template-columns: 1.08fr .92fr; }
-.gleb-review .review-copy { padding: 38px 44px; }
-.gleb-review .review-visual { min-height: 430px; background: #050505; }
+.gleb-review { min-height: 360px; grid-template-columns: 1.08fr .92fr; }
+.gleb-review .review-copy { padding: 32px 44px; }
+.gleb-review .review-visual { min-height: 360px; height: 360px; background: #050505; }
 .gleb-review .review-visual video { width: 100%; height: 100%; display: block; object-fit: cover; }
 .student-gallery { min-height: 610px; isolation: isolate; }
 .student-gallery::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background: linear-gradient(180deg,transparent 48%,rgba(0,0,0,.88)); }
@@ -173,11 +173,12 @@ button { font: inherit; }
 .price-card.featured { border-color: rgba(211,46,42,.85); box-shadow: 0 0 32px rgba(211,46,42,.16); }
 .limited { margin: -17px -13px 26px; padding: 9px 14px; border-radius: 100px; background: linear-gradient(90deg,#a32320,var(--red)); text-align: center; font-size: 13px; font-weight: 900; }
 .tariff-name { margin: 0; font-size: 19px; font-weight: 1000; text-transform: uppercase; }
-.price { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin: 16px 0 22px; }
+.price { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; margin: 16px 0 22px; }
 .current-price { display: inline-flex; align-items: baseline; gap: 7px; }
 .price strong { font-size: clamp(3rem,5vw,4.8rem); line-height: 1; letter-spacing: -.05em; }
 .price span { color: #8a8a8a; }
-.price .old-price { display: inline-grid; place-items: center; min-height: 34px; padding: 0 11px; border: 1px solid rgba(255,59,48,.42); border-radius: 999px; color: #a6a6a6; font-size: .95rem; font-weight: 900; letter-spacing: .02em; text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-decoration-skip-ink: none; }
+.price .current-price { order: 2; }
+.price .old-price { order: 1; color: #888; font-size: 1rem; font-weight: 800; letter-spacing: .04em; text-decoration: line-through; text-decoration-color: var(--red); text-decoration-thickness: 2px; text-decoration-skip-ink: none; }
 .offer-accept { min-height: 36px; color: #777; font-size: 12px; }
 .offer-accept a { text-decoration: underline; text-underline-offset: 3px; }
 .buy-button { height: 58px; display: grid; place-items: center; border-radius: 8px; color: #090909; font-weight: 900; transition: .2s ease; }
@@ -347,6 +348,7 @@ html[data-theme="light"] .letters .split-char { background: linear-gradient(180d
   .student-evidence { grid-template-columns: 1fr; }
   .telegram-review img, .income-proof img { height: auto; max-height: 300px; }
   .student-gallery { min-height: 430px; }
+  .gleb-review .review-visual { min-height: 310px; height: 310px; }
   .decision-media { height: 360px; }
   .pricing-grid { grid-template-columns: 1fr; }
   .price-card { min-height: auto; }
