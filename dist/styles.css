@@ -134,9 +134,7 @@ button { font: inherit; }
 .telegram-review figcaption, .income-proof figcaption { margin-top: 9px; color: #707070; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
 .dmitry-ai-review .student-evidence { grid-template-columns: 1fr 1fr; }
 .dmitry-ai-review .telegram-review img, .dmitry-ai-review .income-proof img { height: 270px; object-fit: contain; background: #050505; }
-.gleb-review { min-height: 360px; grid-template-columns: 1.08fr .92fr; }
-.gleb-review .review-copy { padding: 32px 44px; }
-.gleb-review .review-visual { min-height: 360px; height: 360px; background: #050505; }
+.gleb-review .review-visual { background: #050505; }
 .gleb-review .review-visual video { width: 100%; height: 100%; display: block; object-fit: cover; }
 .student-gallery { min-height: 610px; isolation: isolate; }
 .student-gallery::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background: linear-gradient(180deg,transparent 48%,rgba(0,0,0,.88)); }
@@ -348,7 +346,6 @@ html[data-theme="light"] .letters .split-char { background: linear-gradient(180d
   .student-evidence { grid-template-columns: 1fr; }
   .telegram-review img, .income-proof img { height: auto; max-height: 300px; }
   .student-gallery { min-height: 430px; }
-  .gleb-review .review-visual { min-height: 310px; height: 310px; }
   .decision-media { height: 360px; }
   .pricing-grid { grid-template-columns: 1fr; }
   .price-card { min-height: auto; }
