@@ -132,6 +132,8 @@ button { font: inherit; }
 .telegram-review img { object-position: center; }
 .income-proof img { object-position: center; }
 .telegram-review figcaption, .income-proof figcaption { margin-top: 9px; color: #707070; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+.dmitry-ai-review .student-evidence { grid-template-columns: 1fr 1fr; }
+.dmitry-ai-review .telegram-review img, .dmitry-ai-review .income-proof img { height: 270px; object-fit: contain; background: #050505; }
 .student-gallery { min-height: 610px; isolation: isolate; }
 .student-gallery::after { content: ""; position: absolute; z-index: 2; inset: 0; pointer-events: none; background: linear-gradient(180deg,transparent 48%,rgba(0,0,0,.88)); }
 .student-gallery .student-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
@@ -144,7 +146,7 @@ button { font: inherit; }
 .faq .metal-title { margin-bottom: 68px; }
 .faq-row { min-height: 270px; margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; background: #0f0f0f; text-align: left; }
 .faq-media { position: relative; min-height: 270px; overflow: hidden; }
-.faq-media img { width: 100%; height: 100%; object-fit: cover; }
+.faq-media img, .faq-media video { width: 100%; height: 100%; display: block; object-fit: contain; background: #050505; }
 .faq-row:nth-of-type(even) .faq-media { order: 2; }
 .faq-row:nth-of-type(even) .faq-copy { order: 1; }
 .faq-copy { padding: 48px 42px; display: flex; flex-direction: column; justify-content: center; }
@@ -153,7 +155,7 @@ button { font: inherit; }
 
 .decision { padding-top: 95px; }
 .decision-media { position: relative; display: block; width: min(800px,100%); height: 520px; margin: 46px auto 0; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255,255,255,.14); background: #050505; }
-.decision-media img { width: 100%; height: 100%; object-fit: cover; }
+.decision-media img, .decision-media video { width: 100%; height: 100%; display: block; object-fit: contain; background: #050505; }
 
 .pricing { padding: 50px 0 120px; }
 .pricing-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 24px; align-items: stretch; max-width: 1240px; margin: auto; }

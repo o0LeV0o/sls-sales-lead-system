@@ -9,7 +9,9 @@ const types = {
   ".js": "text/javascript; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
   ".png": "image/png",
-  ".svg": "image/svg+xml"
+  ".svg": "image/svg+xml",
+  ".mp4": "video/mp4",
+  ".mov": "video/quicktime"
 };
 
 createServer(async (request, response) => {
